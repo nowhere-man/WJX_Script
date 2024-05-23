@@ -12,15 +12,18 @@
 
 1.查看chrome浏览器版本（125.0）
 
-<img src="C:\Users\LEGION\AppData\Roaming\Typora\typora-user-images\image-20240523175935555.png" alt="image-20240523175935555" style="zoom: 80%;" />
+![image](https://github.com/paipaix1/WJX_Script/assets/156734592/901997b7-320b-4bac-a82e-32dbf48addcd)
+
 
 2.进入网站：[Chrome for Testing availability (googlechromelabs.github.io)](https://googlechromelabs.github.io/chrome-for-testing/)下载对应版本的Stable的chromedriver Win64
 
-<img src="C:\Users\LEGION\AppData\Roaming\Typora\typora-user-images\image-20240523180205144.png" alt="image-20240523180205144" style="zoom: 50%;" />
+![image](https://github.com/paipaix1/WJX_Script/assets/156734592/1fc5dcb0-2cb2-41f3-abfd-d90c88a6e38b)
+
 
 3.解压chromedriver.exe文件，放置在chrome的安装目录下
 
-<img src="C:\Users\LEGION\AppData\Roaming\Typora\typora-user-images\image-20240523180417574.png" alt="image-20240523180417574" style="zoom:67%;" />
+![image](https://github.com/paipaix1/WJX_Script/assets/156734592/b5de895e-6180-410d-b325-5120635f60ff)
+
 
 4.设置环境变量，在系统变量的path中添加Application的路径，如C:\Program Files\Google\Chrome\Application
 
