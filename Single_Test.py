@@ -13,11 +13,11 @@ from ZM_IP import *
 
 def get_driver(config):
     options = webdriver.ChromeOptions()
-    path = r"C:\Program Files\Google\Chrome\Application\chromedriver.exe"
+    path = r"D:\Programs\chromedriver\chromedriver.exe"
     # 是否使用代理
     if config.proxy:
         # 打开存储ip的文件,使用一个ip
-        with open('WJX_Script\\ip.json', 'r') as f:
+        with open('ip.json', 'r') as f:
             json_idc = json.load(f)
             one_ip = json_idc['data'][0]
             # 用完从文件中移除
@@ -36,7 +36,7 @@ def get_driver(config):
     # 防止自动化检测
     driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument',{'source':'Object.defineProperty(navigator,"webdriver",{get:()=>undefined})'})
     return driver
- 
+
 def vaification():
     # 可能会出现也可能不出现的验证，利用try-except不影响其他代码运行
     # 情况一
@@ -69,7 +69,7 @@ def vaification():
 
 if __name__ == '__main__':
     # 1.问卷星url,只能是vm,不能是vj
-    url = 'https://w.wjx.com/vm/Pmum3Xc.aspx'
+    url = 'https://www.wjx.cn/vm/h4fE7h5.aspx'
     # 2.连接Cofig.py
     config = Config.Config()
     # 3.获取dirver
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     choices = {}
     # 遍历每个题目并选择答案
     for question in config.questions:
-        id = question['id'] 
+        id = question['id']
         # 获取选项列表
         lis = elements[id - 1].find_elements(By.CSS_SELECTOR, f'#div{id} > div.ui-controlgroup > div:nth-child(n+1)')
         # 生成答案
@@ -106,9 +106,9 @@ if __name__ == '__main__':
                 answer.pop(0)
                 for k in range(len(answer)):
                     if answer[k] < now_value:
-                        answer[k] += 1 
+                        answer[k] += 1
                 time.sleep(0.5)
-        
+
         elif question['type'] == 'Scale':
             answers = select_Scale(question,choices)
             driver.find_element(By.XPATH,f'//*[@id="div{id}"]/div[2]/div/ul/li[{answers[0]}]/a').click()
@@ -116,15 +116,16 @@ if __name__ == '__main__':
         elif question['type'] == 'Gap':
             answers = input_Gap(question,choices)
             driver.find_element(By.XPATH,'//*[@id="q6"]').send_keys(answers[0])
-        
+
         # 填充列表
         choices[f'{id}'] = answers
         print(f"For question {id}, the selected answer is: {answers}")
-    print('Question selection presentation：',choices)        
+    print('Question selection presentation：',choices)
 
     # 点击提交
     driver.find_element(By.XPATH,'//*[@id="ctlNext"]').click()
 
     # 智能验证模块
     vaification()
-    
+    driver.close()
+

@@ -24,7 +24,7 @@ def get_driver():
     # 防止自动化检测
     driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument',{'source':'Object.defineProperty(navigator,"webdriver",{get:()=>undefined})'})
     return driver
- 
+
 
 url1 = "https://jahttp.zhimaruanjian.com/users_getapi/"
 
@@ -96,7 +96,7 @@ if __name__ == '__main__':
     # 得到ip的json形式（拿到10个ip）
     json_result = get_json(copied_url)
     print(json_result)
-    
+
     # 将ip的json形式存入文件中
     with open('ip.json', 'w', encoding='utf-8') as f:
         f.write(json_result)
